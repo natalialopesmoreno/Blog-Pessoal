@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -23,6 +25,8 @@ public class PostagemModel
 	private Long Id;
 	
 	@Column
+	@NotNull
+	@Size(min =5, max =100)
 	private String titulo;
 	
 	@Column
@@ -30,11 +34,13 @@ public class PostagemModel
 	private String autor;
 	
 	@Column
+	@NotNull
+	@Size(min =5, max =1000)
 	private String descricao;
 	
 	@Column
-	@JsonFormat(pattern="yyyy-mm-dd")
-	private Date data;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data= new java.sql.Date(System.currentTimeMillis());
 	
 	
 	
@@ -71,13 +77,6 @@ public class PostagemModel
 		this.descricao = descricao;
 	}
 
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
 
 	
 	
