@@ -1,7 +1,7 @@
 # Blog-Pessoal
 
 Criação de um Blog Pessoal utilizando a linguagem Java, 
-o Frmaework Spring Tools, 
+o Framework Spring Tools, 
 a arquitetura Spring MVC 
 e como dependências:
 
