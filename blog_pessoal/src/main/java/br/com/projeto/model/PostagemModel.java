@@ -40,10 +40,12 @@ public class PostagemModel
 	
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date data= new java.sql.Date(System.currentTimeMillis());
+	private Date data = new java.sql.Date(System.currentTimeMillis());
 	
 	
 	
+	
+
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return Id;
@@ -53,6 +55,9 @@ public class PostagemModel
 		Id = id;
 	}
 
+	public Date getData() {
+		return data;
+	}
 	public String getTitulo() {
 		return titulo;
 	}
