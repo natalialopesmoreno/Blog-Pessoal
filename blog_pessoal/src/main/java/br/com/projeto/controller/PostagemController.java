@@ -76,7 +76,7 @@ public class PostagemController implements WebMvcConfigurer
 
 
 	//DELETE
-	@DeleteMapping ("/manutencao/{id}")
+	@DeleteMapping ("/{id}")
 	public void remover(@PathVariable Long id) 
 	{		
 		repository.deleteById(id);
