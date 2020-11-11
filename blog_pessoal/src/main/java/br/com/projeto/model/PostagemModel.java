@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
@@ -31,6 +33,10 @@ public class PostagemModel
 	@Size(min =5, max =100)
 	private String titulo;
 	
+	@NotNull
+	private int ano;
+
+
 	@Column
 	@NotNull
 	private String autor;
@@ -40,9 +46,10 @@ public class PostagemModel
 	@Size(min =5, max =1000)
 	private String descricao;
 	
-	@Column
+	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")//Essa linha fala para o Mysql colocar a data automática
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date data = new java.sql.Date(System.currentTimeMillis());
+	@CreationTimestamp
+	private Date data;
 	
 	
 	@ManyToOne
@@ -103,7 +110,13 @@ public class PostagemModel
 		this.data = data;
 	}
 
+	public int getAno() {
+		return ano;
+	}
 
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
 	
 	
 	
