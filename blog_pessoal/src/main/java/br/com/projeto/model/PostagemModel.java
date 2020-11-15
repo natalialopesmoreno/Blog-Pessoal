@@ -16,7 +16,6 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name="tb_postagem")
@@ -29,21 +28,10 @@ public class PostagemModel
 	private Long Id;
 	
 	@Column
-	@NotNull
 	@Size(min =5, max =100)
 	private String titulo;
-	
-	@NotNull
 	private int ano;
-
-
-	@Column
-	@NotNull
 	private String autor;
-	
-	@Column
-	@NotNull
-	@Size(min =5, max =1000)
 	private String descricao;
 	
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")//Essa linha fala para o Mysql colocar a data automática

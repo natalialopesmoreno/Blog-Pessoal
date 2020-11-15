@@ -44,7 +44,7 @@ public class TemaController
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<TemaModel>> getByNome(@PathVariable String nome)
 	{
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+		return ResponseEntity.ok(repository.findAllByNomeIgnoreCaseContaining(nome));
 	}
 	
 	@PostMapping
