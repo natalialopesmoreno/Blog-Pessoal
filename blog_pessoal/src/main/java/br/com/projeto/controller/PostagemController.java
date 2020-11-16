@@ -38,25 +38,25 @@ public class PostagemController implements WebMvcConfigurer {
 		return ResponseEntity.ok(repository.findAll());
 	}
 
-	@GetMapping(value = "/maior")
-	public ResponseEntity<List<PostagemModel>> findAllMaior() {
-		return ResponseEntity.ok(repository.findAllMaior());
-	}
-
-	@GetMapping(value = "/ordem")
-	public ResponseEntity<List<PostagemModel>> anosDesc() {
-		return ResponseEntity.ok(repository.anosDesc());
-	}
-
-	@GetMapping(value = "/intervalo")
-	public ResponseEntity<List<PostagemModel>> anosIntervalos() {
-		return ResponseEntity.ok(repository.anosIntervalos());
-	}
-
-	@GetMapping(value = "/asc")
-	public ResponseEntity<List<PostagemModel>> anosAsc() {
-		return ResponseEntity.ok(repository.anosAsc());
-	}
+//	@GetMapping(value = "/maior")
+//	public ResponseEntity<List<PostagemModel>> findAllMaior() {
+//		return ResponseEntity.ok(repository.findAllMaior());
+//	}
+//
+//	@GetMapping(value = "/ordem")
+//	public ResponseEntity<List<PostagemModel>> anosDesc() {
+//		return ResponseEntity.ok(repository.anosDesc());
+//	}
+//
+//	@GetMapping(value = "/intervalo")
+//	public ResponseEntity<List<PostagemModel>> anosIntervalos() {
+//		return ResponseEntity.ok(repository.anosIntervalos());
+//	}
+//
+//	@GetMapping(value = "/asc")
+//	public ResponseEntity<List<PostagemModel>> anosAsc() {
+//		return ResponseEntity.ok(repository.anosAsc());
+//	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<PostagemModel> findByIdPostagem(@PathVariable Long id) {
@@ -66,7 +66,7 @@ public class PostagemController implements WebMvcConfigurer {
 
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity<List<PostagemModel>> findAllByTitulo(@PathVariable String titulo) {
-		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
+		return ResponseEntity.ok(repository.findAllByTituloIgnoreCaseContaining(titulo));
 	}
 
 	// POST- CREATE
