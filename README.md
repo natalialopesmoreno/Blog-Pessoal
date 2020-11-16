@@ -10,3 +10,5 @@ e como dependências:
 -Spring Verification
 -Spring DevTools
 -Spring Web
+
+PAra segurança e criptação de dados foi utilizado Spring Security
