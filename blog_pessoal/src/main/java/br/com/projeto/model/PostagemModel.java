@@ -28,7 +28,6 @@ public class PostagemModel
 	private Long Id;
 	
 	@Column
-	@Size(min =5, max =100)
 	private String titulo;
 	private int ano;
 	private String autor;
@@ -45,14 +44,25 @@ public class PostagemModel
 	private TemaModel tema;
 	
 	
+	//CONSTRUTORES
+	
+	public PostagemModel() {}
 	
 	
-	
+	public PostagemModel( String titulo, int ano, String autor, String descricao) {
+		this.titulo = titulo;
+		this.ano = ano;
+		this.autor = autor;
+		this.descricao = descricao;
+		
+	}
 
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return Id;
 	}
+
+	
 
 	public void setId(Long id) {
 		Id = id;

@@ -37,6 +37,15 @@ public class Usuario implements UserDetails, Serializable {
 	inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "nomeRole"))
 	private List<Role> roles;
 
+	//CONSTRUTORES
+	public Usuario() {}
+	
+	public Usuario(String login, String senha, String nome) 
+	{
+		this.login = login;
+		this.senha = senha;
+		this.nome = nome;
+	}
 	
 
 
