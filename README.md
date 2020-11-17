@@ -10,5 +10,7 @@ e como dependências:
 -Spring Verification
 -Spring DevTools
 -Spring Web
+-Thymleaf
+-Swagger 
 
-PAra segurança e criptação de dados foi utilizado Spring Security
+Para segurança e criptação de dados foi utilizado Spring Security
