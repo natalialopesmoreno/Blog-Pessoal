@@ -12,5 +12,6 @@ e como dependências:
 -Spring Web
 -Thymleaf
 -Swagger 
+-Commons Codec
 
-Para segurança e criptação de dados foi utilizado Spring Security
+Para segurança e criptação de dados foi utilizado Spring Security 
