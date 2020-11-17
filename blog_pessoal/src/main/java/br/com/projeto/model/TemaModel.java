@@ -31,7 +31,20 @@ public class TemaModel
 		private String descricao;
 		
 		
+		//CONSTRUTORES
 		
+		public TemaModel() {}
+		
+		
+		public TemaModel(String nome, String descricao) {
+			super();
+			this.nome = nome;
+			this.descricao = descricao;
+		}
+
+
+
+
 		public Long getId_tema() {
 			return Id_tema;
 		}

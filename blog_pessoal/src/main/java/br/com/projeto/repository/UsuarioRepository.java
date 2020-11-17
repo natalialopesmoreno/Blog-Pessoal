@@ -7,6 +7,6 @@ import br.com.projeto.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, String> 
 {
 
-	public Usuario findByLogin(String usuario);
+	public Usuario findByLogin(String login);
 	
 }
