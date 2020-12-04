@@ -1,9 +1,11 @@
+
+
 export class Usuario
 {
-    public login: string;
+    public usuario: string;
 	public senha: string;
 	public nome: string
-	public roles: Roles[];
+	
 		
 
 
