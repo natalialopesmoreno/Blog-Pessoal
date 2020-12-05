@@ -25,6 +25,7 @@ public class Security extends WebSecurityConfigurerAdapter
 		
 		.antMatchers(HttpMethod.GET, "/").permitAll()
 		.antMatchers(HttpMethod.POST, "/cadastrar").permitAll()
+		.antMatchers(HttpMethod.POST, "/login").permitAll()
 		
 		.antMatchers(HttpMethod.GET, "/cadastrarTema").hasRole("ADMIN")
 		.antMatchers(HttpMethod.POST, "/cadastrarTema").hasRole("ADMIN")
