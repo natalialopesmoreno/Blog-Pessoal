@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Postagem } from '../model/Postagem';
+import { Tema } from '../model/Tema';
+import { PostagemService } from '../service/postagem.service';
+import { TemaService } from '../service/tema.service';
 
 @Component({
   selector: 'app-feed',
@@ -7,11 +11,65 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedComponent implements OnInit {
 
-  constructor() { }
+  constructor(private postagemService: PostagemService, private temaService:TemaService) { }
+
+  key = 'data'
+  reverse = true
+
+  postagem :Postagem = new Postagem();
+  listaPostagem: Postagem[];
+
+
+  tema : Tema = new Tema();
+  listaTema: Tema[];
+  idTema: number;
+
+
 
   ngOnInit(){
     window.scroll(0,0);
-    
+    this.findAllPostagens();
+    this.findAllTemas();
+
+  }
+
+  findAllPostagens()
+  {
+    this.postagemService.getAllPostagens().subscribe((resp:Postagem[])=> {this.listaPostagem = resp})
+  }
+
+  publicar()
+  {
+    this.tema.id = this.idTema;
+    this.postagem.tema = this.tema
+
+    if(this.postagem.tema == null || this.postagem.titulo  == null || this.postagem.texto == null )
+    {
+      alert("Preencha os campos corretamente!")
+    }
+    else
+    {
+      this.postagemService.postPostagem(this.postagem).subscribe((resp:Postagem)=>
+      {
+        this.postagem = resp;
+        /* essa linha esvazia os campos para pegar outra postagem*/
+        this.postagem = new Postagem();
+        alert("Postagem realizada!")
+        this.findAllPostagens();
+      })
+    }
+  }
+
+  findAllTemas()
+  {
+    this.temaService.getAllTemas().subscribe((resp:Tema[])=> {this.listaTema = resp})
+  }
+
+  findByIdTemas()
+  {
+    this.temaService.getByIdTema(this.idTema).subscribe((resp:Tema)=> {
+      this.tema = resp
+    })
   }
 
 }

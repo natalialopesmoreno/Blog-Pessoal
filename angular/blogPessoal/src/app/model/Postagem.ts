@@ -6,7 +6,7 @@ export class Postagem
     public ano: number;
     public titulo: string;
     public autor: string;
-    public descricao: string;
+    public texto: string;
     public data: Date;
     public tema: Tema;
 
