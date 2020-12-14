@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { UserLogin } from '../model/UserLogin';
 import { Usuario } from '../model/Usuario';
 
@@ -12,40 +13,21 @@ export class AuthService {
    }
 
 
-   logar(userLogin : UserLogin)
+   logar(userLogin : UserLogin): Observable<UserLogin>
    {
-      return this.http.post('http://192.168.99.100:9000/usuarios/logar', userLogin );
+      return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar', userLogin );
    }
 
-   cadastrar(usuario : Usuario)
+   cadastrar(usuario : Usuario): Observable<Usuario>
    {
-      return this.http.post('http://192.168.99.100:9000/usuarios/cadastrar', usuario );
+      return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario );
    }
 
-   btnSair()
-   {
-      let ok = false;
-      let token= localStorage.getItem('token');
-
-      if(token!=null)
-      {
-         ok = true;
-      }
-
-      return ok;
-   }
-
-   btnLogin()
-   {
-      let ok = false;
-      let token= localStorage.getItem('token');
-
-      if(token==null)
-      {
-         ok = true;
-      }
-
-      return ok;
-   }
+   btnSair() {
+    return localStorage.getItem('token') != null
+  }
+  btnLogin() {
+    return localStorage.getItem('token') == null
+  }
 
 }

@@ -1,14 +1,14 @@
-import { TemaModel } from './TemaModel';
+import { Tema } from './Tema';
 
-export class PostagemModel
+export class Postagem
 {
     public id: number;
     public ano: number;
     public titulo: string;
     public autor: string;
-    public descricao: string;
+    public texto: string;
     public data: Date;
-    public tema: TemaModel;
+    public tema: Tema;
 
 
 }
