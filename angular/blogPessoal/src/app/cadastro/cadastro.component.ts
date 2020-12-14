@@ -2,6 +2,7 @@ import { Usuario } from './../model/Usuario';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
+import { AlertasService } from '../service/alertas.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -13,14 +14,16 @@ export class CadastroComponent implements OnInit {
   user:Usuario = new Usuario();
   senha:string;
 
-  constructor(private authService:AuthService, private router: Router) { }
+  constructor(private authService:AuthService,
+              private router: Router,
+              private alert : AlertasService) { }
 
   ngOnInit() {
-    
+
 
   }
 
-  conferirSenha(event:any) 
+  conferirSenha(event:any)
   {
       this.senha = event.target.value;
   }
@@ -33,7 +36,7 @@ export class CadastroComponent implements OnInit {
       this.router.navigate(['/login'])
     }else
     {
-      alert('Senha não confere')
+      this.alert.showAlertDanger('Senha não confere')
     }
   }
 

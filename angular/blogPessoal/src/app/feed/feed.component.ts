@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 
@@ -11,18 +12,21 @@ import { TemaService } from '../service/tema.service';
 })
 export class FeedComponent implements OnInit {
 
-  constructor(private postagemService: PostagemService, private temaService:TemaService) { }
+  constructor(private postagemService: PostagemService,
+              private temaService:TemaService,
+              private alert : AlertasService) { }
 
   key = 'data'
   reverse = true
 
   postagem :Postagem = new Postagem();
   listaPostagem: Postagem[];
-
+  titulo : string;
 
   tema : Tema = new Tema();
   listaTema: Tema[];
   idTema: number;
+  nomeTema : string;
 
 
 
@@ -45,7 +49,7 @@ export class FeedComponent implements OnInit {
 
     if(this.postagem.tema == null || this.postagem.titulo  == null || this.postagem.texto == null )
     {
-      alert("Preencha os campos corretamente!")
+      this.alert.showAlertDanger("Preencha os campos corretamente!")
     }
     else
     {
@@ -54,7 +58,7 @@ export class FeedComponent implements OnInit {
         this.postagem = resp;
         /* essa linha esvazia os campos para pegar outra postagem*/
         this.postagem = new Postagem();
-        alert("Postagem realizada!")
+        this.alert.showAlertSuccess("Postagem realizada!")
         this.findAllPostagens();
       })
     }
@@ -70,6 +74,29 @@ export class FeedComponent implements OnInit {
     this.temaService.getByIdTema(this.idTema).subscribe((resp:Tema)=> {
       this.tema = resp
     })
+  }
+  findByTituloPostagem()
+  {
+      if(this.titulo === '')
+      {
+        this.findAllPostagens();
+      } else
+      {
+        this.postagemService.getByTituloPostagem(this.titulo).subscribe((resp:Postagem[])=>
+        {this.listaPostagem = resp})
+      }
+  }
+
+  findByNomeTema()
+  {
+    if(this.titulo === '')
+      {
+        this.findAllTemas();
+      } else
+      {
+        this.temaService.getByNomeTema(this.nomeTema).subscribe((resp:Tema[])=>
+        {this.listaTema = resp})
+      }
   }
 
 }
